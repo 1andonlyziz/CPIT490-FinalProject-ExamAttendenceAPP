@@ -1,0 +1,178 @@
+@startuml
+class com.example.kauexam.CreateExamActivity {
+~ Calendar myCalendar
+~ EditText eDate
+~ FirebaseDatabase database
+~ DatabaseReference ref
+~ Dialog dialog
+# void onCreate(Bundle)
+- void updateLabel()
+}
+class com.example.kauexam.MainActivity {
+# void onCreate(Bundle)
+}
+class com.example.kauexam.StudentClass {
+- String id
+- String fullName
+- String section
++ <<Create>> StudentClass()
++ <<Create>> StudentClass(String,String,String)
++ String getFullName()
++ void setFullName(String)
++ String getId()
++ void setId(String)
++ String getSection()
++ void setSection(String)
++ String toString()
++ Map<String,Object> toMap()
+}
+class com.example.kauexam.FirstActivity {
+# void onCreate(Bundle)
+}
+class com.example.kauexam.camera {
+~ {static} int REQUEST_IMAGE_CAPTURE
+- Button CaptureImageBtn
+- ImageView imageView
+- TextView textView
+~ Bitmap imageBitmap
+- String currentPhotoPath
++ {static} ArrayList<String> studentInfo
+# void onCreate(Bundle)
++ void move()
+# void onActivityResult(int,int,Intent)
+- void detectTextFromImage()
+- ArrayList<String> displayTextFromImage(FirebaseVisionText)
+}
+class com.example.kauexam.AttendenceConfirmation {
++ {static} String ANSI_GREEN
+~ FirebaseDatabase database
+~ DatabaseReference ref
+~ TextView course_code
+~ EditText section
+~ Button confirmBtn
+# void onCreate(Bundle)
+}
+class com.example.kauexam.ExamRecyclerAdapter {
+- ArrayList<ExamHistory> examList
+- RecyclerViewClickInterface recyclerViewClickInterface
++ <<Create>> ExamRecyclerAdapter(ArrayList<ExamHistory>,RecyclerViewClickInterface)
++ ExamRecyclerAdapter.MyViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ExamRecyclerAdapter.MyViewHolder,int)
++ int getItemCount()
+}
+class com.example.kauexam.ExamRecyclerAdapter.MyViewHolder {
+- TextView courseCode
+- TextView examDate
+- TextView examTime
+- TextView location
++ <<Create>> MyViewHolder(View)
+}
+class com.example.kauexam.ScanqrActivity {
+# void onCreate(Bundle)
+}
+class com.example.kauexam.SplashActivity {
+~ FirebaseDatabase database
+~ DatabaseReference myRef
+~ Date date
+# void onCreate(Bundle)
+- void delay()
+}
+class com.example.kauexam.StudentsListExams {
+- ArrayList<ExamHistory> examList
+- RecyclerView recyclerView
++ {static} ArrayList<String> examInfo
+- FirebaseDatabase database
+- DatabaseReference ref
+# void onCreate(Bundle)
+- void setAdapter()
++ void onItemClick(int)
++ void onLongItemClick(int)
+}
+class com.example.kauexam.LoginActivity {
+~ EditText mLoginEmail
+~ EditText mPassword
+~ TextView missingPassword
+~ Button mLoginBtn
+~ FirebaseAuth auth
+~ {static} String userId
+# void onCreate(Bundle)
+- void loginUser()
+}
+class com.example.kauexam.HistoryActivity {
+- ArrayList<ExamHistory> examList
+- RecyclerView recyclerView
+- FirebaseDatabase database
+- DatabaseReference ref
+# void onCreate(Bundle)
+- void setAdapter()
++ void onItemClick(int)
++ void onLongItemClick(int)
+}
+class com.example.kauexam.ExamHistory {
+- String courseCode
+- String location
+- String examDate
+- String examTime
++ <<Create>> ExamHistory()
++ <<Create>> ExamHistory(String,String,String,String)
++ String getCourseCode()
++ void setCourseCode(String)
++ String getLocation()
++ void setLocation(String)
++ String getExamDate()
++ void setExamDate(String)
++ String getExamTime()
++ void setExamTime(String)
++ String toString()
+}
+interface com.example.kauexam.RecyclerViewClickInterface {
+~ void onItemClick(int)
+~ void onLongItemClick(int)
+}
+class com.example.kauexam.StudentListActivity {
+- FirebaseDatabase database
+- DatabaseReference ref
+- ArrayList<StudentClass> studentlist
+- ArrayList<StudentClass> studentList
+- RecyclerView recyclerView
+# void onCreate(Bundle)
+- void setAdapter()
++ void onItemClick(int)
++ void onLongItemClick(int)
+}
+class com.example.kauexam.StudentRecyclerAdapter {
+- ArrayList<StudentClass> userlist
++ <<Create>> StudentRecyclerAdapter(ArrayList<StudentClass>)
++ StudentRecyclerAdapter.MyViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(StudentRecyclerAdapter.MyViewHolder,int)
++ int getItemCount()
+}
+class com.example.kauexam.StudentRecyclerAdapter.MyViewHolder {
+- TextView studentName
+- TextView sectionName
+- TextView studentId
++ <<Create>> MyViewHolder(View)
+}
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.CreateExamActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.FirstActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.camera
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.AttendenceConfirmation
+com.example.kauexam.Adapter <|-- com.example.kauexam.ExamRecyclerAdapter
+com.example.kauexam.ExamRecyclerAdapter +.. com.example.kauexam.ExamRecyclerAdapter.MyViewHolder
+com.example.kauexam.ViewHolder <|-- com.example.kauexam.ExamRecyclerAdapter.MyViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.ScanqrActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.SplashActivity
+com.example.kauexam.RecyclerViewClickInterface <|.. com.example.kauexam.StudentsListExams
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.StudentsListExams
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.LoginActivity
+com.example.kauexam.RecyclerViewClickInterface <|.. com.example.kauexam.HistoryActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.HistoryActivity
+com.example.kauexam.RecyclerViewClickInterface <|.. com.example.kauexam.StudentListActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.kauexam.StudentListActivity
+com.example.kauexam.Adapter <|-- com.example.kauexam.StudentRecyclerAdapter
+com.example.kauexam.StudentRecyclerAdapter +.. com.example.kauexam.StudentRecyclerAdapter.MyViewHolder
+com.example.kauexam.ViewHolder <|-- com.example.kauexam.StudentRecyclerAdapter.MyViewHolder
+@enduml

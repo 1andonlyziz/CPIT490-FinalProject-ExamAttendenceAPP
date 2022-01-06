@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "318637540045",
+    "project_id": "kau-exam-attendence",
+    "storage_bucket": "kau-exam-attendence.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318637540045:android:43b8194dae5b5f08a05f84",
+        "android_client_info": {
+          "package_name": "com.example.kauexam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318637540045-1uvdnai16da36se7venlbofgqeb328t8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu9MuxEOZSWw-1H-DPbwgfyPgyEFsYakI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318637540045-1uvdnai16da36se7venlbofgqeb328t8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
